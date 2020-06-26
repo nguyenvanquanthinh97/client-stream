@@ -37,7 +37,6 @@ const Header = ({ userInfo }) => {
 };
 
 const mapStateToProps = (state) => {
-	console.log(state);
 	return { userInfo: state.auth.userInfo };
 };
 
