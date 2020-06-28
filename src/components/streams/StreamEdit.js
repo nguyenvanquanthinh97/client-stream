@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { editStream, fetchStream } from '../../actions';
 import StreamForm from './StreamForm';
+import Spinner from '../Spinner';
 
 class StreamEdit extends React.Component {
 	componentDidMount() {
@@ -17,7 +18,10 @@ class StreamEdit extends React.Component {
 
 	render() {
 		const { stream } = this.props;
-		return <StreamForm initialValues={stream} onFormSubmit={this.onFormSubmit} edit/>;
+
+		if (!stream) return <Spinner />;
+
+		return <StreamForm initialValues={stream} onFormSubmit={this.onFormSubmit} edit />;
 	}
 }
 

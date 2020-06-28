@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import Modal from '../Modal';
 import { fetchStream, deleteStream } from '../../actions';
 import history from '../../history';
+import Spinner from '../Spinner';
 
 class StreamDelete extends React.Component {
 	componentDidMount() {
@@ -26,11 +26,10 @@ class StreamDelete extends React.Component {
 	}
 
 	renderContent(stream) {
-		const label = 'DO YOU WANT TO DELETE: ';
 		if (!stream) {
-			return label;
+			return <Spinner />;
 		}
-		return label.concat(stream.title);
+		return `DO YOU WANT TO DELETE: ${stream}`;
 	}
 
 	render() {

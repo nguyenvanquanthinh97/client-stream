@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import GoogleButton from './GoogleButton';
 import * as actions from '../actions';
+import Spinner from './Spinner';
 
 class GoogleAuth extends React.Component {
 	componentDidMount() {
@@ -56,11 +57,7 @@ class GoogleAuth extends React.Component {
 		const { isLoggedIn } = this.props;
 
 		if (isLoggedIn === null) {
-			return (
-				<div className="ui active inverted dimmer">
-					<div className="ui loader" />
-				</div>
-			);
+			return <Spinner />;
 		} else if (isLoggedIn) {
 			return <GoogleButton label={'SIGN OUT'} onButtonClick={this.onSignoutClick} />;
 		} else {

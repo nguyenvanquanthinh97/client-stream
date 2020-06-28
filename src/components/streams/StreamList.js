@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { fetchStreams, editStream, deleteStream } from '../../actions';
+import Spinner from '../Spinner';
 
 class StreamList extends React.Component {
 	componentDidMount() {
@@ -10,7 +11,6 @@ class StreamList extends React.Component {
 	}
 
 	renderManager = (id) => {
-		const { editStream, deleteStream } = this.props;
 		return (
 			<div className="right floated content">
 				<Link to={`/streams/edit/${id}`} className="ui button primary">
@@ -41,6 +41,9 @@ class StreamList extends React.Component {
 
 	render() {
 		const { streams } = this.props;
+
+		if (!streams) return <Spinner />;
+
 		return (
 			<div>
 				<h1>Streams</h1>
